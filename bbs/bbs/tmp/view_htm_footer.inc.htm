@@ -1,0 +1,79 @@
+<?php $db = G('db');?>
+<?php $starttime = G('starttime');?>
+<?php $time = G('time');?>
+<?php $ip = G('ip');?>
+<?php $useragent = G('useragent');?>
+<?php $forumlist = G('forumlist');?>
+<?php $forumarr = G('forumarr');?>
+<?php $fid = G('fid');?>
+<?php $conf = G('conf');?>
+<?php $static_version = $conf['static_version'];?>
+				
+			
+		
+			<?php  echo xn_debug_info(); ?>
+	
+		</div>
+	</main>
+	
+	
+	
+	<?php include _include(APP_PATH.'view/htm/footer_nav.inc.htm');?>
+	
+	
+	
+	<!--[if ltg IE 9]>
+	<script>window.location = '<?php echo url('browser');?>';</script>
+	<![endif]-->
+	
+	
+	
+	<?php $browser = get__browser();?>
+	<?php if($browser['name'] == 'ie') { ?>
+	<script src="<?php echo $conf['view_url'];?>js/es6-shim.js<?php echo $static_version;?>"></script>
+	<?php } ?>
+	<script src="lang/<?php echo $conf['lang'];?>/bbs.js<?php echo $static_version;?>"></script>
+	<script src="<?php echo $conf['view_url'];?>js/jquery-3.1.0.js<?php echo $static_version;?>"></script>
+	<script src="<?php echo $conf['view_url'];?>js/popper.js<?php echo $static_version;?>"></script>
+	<script src="<?php echo $conf['view_url'];?>js/bootstrap.js<?php echo $static_version;?>"></script>
+	<script src="<?php echo $conf['view_url'];?>js/xiuno.js<?php echo $static_version;?>"></script>
+	<script src="<?php echo $conf['view_url'];?>js/bootstrap-plugin.js<?php echo $static_version;?>"></script>
+	<script src="<?php echo $conf['view_url'];?>js/async.js<?php echo $static_version;?>"></script>
+	<script src="<?php echo $conf['view_url'];?>js/form.js<?php echo $static_version;?>"></script>
+	<script>
+	var debug = DEBUG = <?php echo DEBUG; ?>;
+	var url_rewrite_on = <?php echo $conf['url_rewrite_on'];?>;
+	var forumarr = <?php echo xn_json_encode($forumarr);?>;
+	var fid = <?php echo $fid;?>;
+	var uid = <?php echo intval($uid);?>;
+	var gid = <?php echo intval($gid);?>;
+	xn.options.water_image_url = '<?php echo $conf['logo_water_url'];?>';	// 水印图片 / watermark image
+	</script>
+	<script src="<?php echo $conf['view_url'];?>js/bbs.js<?php echo $static_version;?>"></script>
+	
+	
+</body>
+
+</html>
+
+<div id="scroll_to_top" class="d-fixed" style="position: fixed; _position: absolute; bottom: 80px; right: 10px; width: 70px; height: 70px; display: none;">
+	<a href="javascript:void(0);" style="width: 70px; height: 70px; display: inline-block; background: url(plugin/xn_top/scroll_top.png) no-repeat; outline: none;" title="返回顶部"></a>
+</div>
+	
+<script>
+// 返回顶部
+var jscroll_to_top = $('#scroll_to_top');
+$(window).scroll(function() {
+	if ($(window).scrollTop() >= 500) {
+	   jscroll_to_top.fadeIn(300);
+	} else {
+		jscroll_to_top.fadeOut(300);
+	}
+});
+
+jscroll_to_top.on('click', function() {
+	$('html,body').animate({scrollTop: '0px' }, 100);
+});
+</script>
+
+<?php echo cron_run();?>
