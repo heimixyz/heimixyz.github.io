@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id="app">
+     {{a}} {{b}}
+	</div>
+	
+	<script type="text/javascript">
+	var data = { a: 55,b:44 };
+	var vm = new Vue({
+		el: '#app',
+		data : data
+	});
+	vm.a = "dsfs";
+	vm.b = "dsf2244444442222s"
+	</script>
+
+</body>
+</html>
